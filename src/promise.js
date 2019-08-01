@@ -75,6 +75,9 @@ ManualPromise = function(action) {
 			prom2.reject.apply(prom2, arguments);
 		});
 
+		// prevent throwing error
+		prom2._superCatch(x => x);
+
 		return prom2;
 	};
 
@@ -103,6 +106,12 @@ ManualPromise.prototype = oldProto;
 ManualPromise.resolve = function resolve(data) {
 	const prom = new ManualPromise();
 	prom.resolve(data);
+	return prom;
+};
+
+ManualPromise.reject = function reject(data) {
+	const prom = new ManualPromise();
+	prom.reject(data);
 	return prom;
 };
 
