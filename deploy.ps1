@@ -1,6 +1,6 @@
 #! /usr/bin/pwsh
 
-yarn test
+yarn test --no-watch
 
 yarn build
 
