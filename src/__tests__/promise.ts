@@ -12,6 +12,8 @@ describe("manual promise", () => {
 		expect(typeof prom.reject).toEqual("function");
 		expect(typeof ManualPromise.resolve).toEqual("function");
 		expect(typeof ManualPromise.reject).toEqual("function");
+		expect(prom instanceof Promise).toEqual(true);
+		expect(prom instanceof ManualPromise).toEqual(true);
 	});
 
 	test("Resolve", () => {
@@ -48,5 +50,24 @@ describe("manual promise", () => {
 				resolve();
 			}, 1);
 		});
+	});
+
+	test("Ctor", () => {
+		const mock = jest.fn();
+
+		const prom = new ManualPromise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(33);
+			}, 10);
+		});
+
+		return prom
+			.then(data => {
+				mock(data);
+			})
+			.then(() => {
+				expect(mock).toBeCalled();
+				expect(mock.mock.calls[0][0]).toEqual(33);
+			});
 	});
 });

@@ -1,6 +1,6 @@
 {
   "name": "manual-promise",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "repository": "git@github.com:zpxp/manual-promise.git",
   "author": "brendo",
