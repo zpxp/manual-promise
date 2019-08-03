@@ -18,4 +18,23 @@ Extends `Promise` so
 
 Other solutions on the internet use a proxy or wrapper class for promise so they do not function as a drop in replacement.
 
+### Use
+
+``` ts
+
+import { ManualPromise } from "manual-promise";
+
+const prom = new ManualPromise();
+
+prom.resolve(2);
+
+// actions can still be run inside the promise
+const prom2 = new ManualPromise((resolve, reject) => {
+	// ... code
+});
+
+```
+
+The class also exists on `window`, so the import is optional. Add to your global.d.ts file if using typescript and do not wish to import.
+
 View the test file for examples.
