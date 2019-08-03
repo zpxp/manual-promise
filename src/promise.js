@@ -46,7 +46,7 @@ const oldProto = ManualPromise.prototype;
 ManualPromise = function(action) {
 	let temp = {};
 
-	// pass excecuter as 2nd arg that will be arguments[1] in actual ctor
+	// assign resolve and reject to temp object then put them on the instance after its initial construction
 	let prom = new originalCtor((resolve, reject) => {
 		temp._promiseResolve = resolve;
 		temp._promiseReject = reject;
@@ -55,6 +55,7 @@ ManualPromise = function(action) {
 	prom._promiseResolve = temp._promiseResolve;
 	prom._promiseReject = temp._promiseReject;
 
+	// then and catch would return a regular Promise. Override them to return a manual promise instead
 	prom.then = function() {
 		const prom2 = new ManualPromise();
 		this._superThen.apply(this, arguments).then(
@@ -103,6 +104,8 @@ oldProto.constructor = ManualPromise.prototype.constructor;
 //proto switcheroo
 ManualPromise.prototype = oldProto;
 
+
+//static funcs
 ManualPromise.resolve = function resolve(data) {
 	const prom = new ManualPromise();
 	prom.resolve(data);

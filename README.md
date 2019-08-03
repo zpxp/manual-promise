@@ -1,6 +1,7 @@
 # manual-promise
 
 `yarn add manual-promise`
+
 `npn install manual-promise`
 
 A drop in replacement for JS `Promise` that exposes the `resolve` and `reject` function to scopes that have access to the promise instance.
