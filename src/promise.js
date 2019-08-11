@@ -77,9 +77,7 @@ ManualPromise = function(action) {
 		});
 
 		// prevent throwing error
-		prom2._superCatch(x => x);
-
-		return prom2;
+		return prom2._superCatch(x => x);
 	};
 
 	// now run passed in action
