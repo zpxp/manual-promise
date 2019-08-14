@@ -33,7 +33,7 @@ module.exports = {
   appPath: resolveApp('.'),
   appBuildDist: resolveApp('dist'),
   appBuildLib: resolveApp('lib'),
-  appIndexJs: resolveApp('src/index.ts'),
+  appIndexJs: resolveApp('src/index.js'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   yarnLockFile: resolveApp('yarn.lock'),

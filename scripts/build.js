@@ -5,7 +5,7 @@ process.env.BABEL_ENV = "production";
 process.env.NODE_ENV = "production";
 
 // Makes the script crash on unhandled rejections instead of silently
-// ignoring them. In the future, promise rejections that are not handled will
+// ignoring them. In the future, index rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
 process.on("unhandledRejection", err => {
 	throw err;
@@ -84,8 +84,8 @@ function build() {
 				return reject(new Error(messages.errors.join("\n\n")));
 			}
 
-			fs.copyFileSync(path.join(paths.appSrc, "promise.d.ts"), path.join(paths.appBuildLib, "promise.d.ts"));
-			fs.copyFileSync(path.join(paths.appSrc, "promise.d.ts"), path.join(paths.appBuildDist, "promise.d.ts"));
+			fs.copyFileSync(path.join(paths.appSrc, "index.d.ts"), path.join(paths.appBuildLib, "index.d.ts"));
+			fs.copyFileSync(path.join(paths.appSrc, "index.d.ts"), path.join(paths.appBuildDist, "index.d.ts"));
 
 			const resolveArgs = {
 				stats,
