@@ -1,4 +1,4 @@
-import { ManualPromise } from "../index";
+import ManualPromise from "../index";
 
 describe("manual promise", () => {
 	test("Should resolve", () => {
