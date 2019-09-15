@@ -102,7 +102,6 @@ oldProto.constructor = ManualPromise.prototype.constructor;
 //proto switcheroo
 ManualPromise.prototype = oldProto;
 
-
 //static funcs
 ManualPromise.resolve = function resolve(data) {
 	const prom = new ManualPromise();
@@ -118,8 +117,8 @@ ManualPromise.reject = function reject(data) {
 
 // assign a single instance to window then export that instance. this is so `instanceof` will always work if multiple
 // copies of the lib exist in node_modules
-if (!window.ManualPromise) {
+if (window && !window.ManualPromise) {
 	window.ManualPromise = ManualPromise;
 }
 
-export default window.ManualPromise;
+export default window ? window.ManualPromise : ManualPromise;
