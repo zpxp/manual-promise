@@ -117,8 +117,8 @@ ManualPromise.reject = function reject(data) {
 
 // assign a single instance to window then export that instance. this is so `instanceof` will always work if multiple
 // copies of the lib exist in node_modules
-if (window && !window.ManualPromise) {
-	window.ManualPromise = ManualPromise;
+if (typeof self !== "undefined" && !self.ManualPromise) {
+	self.ManualPromise = ManualPromise;
 }
 
-export default window ? window.ManualPromise : ManualPromise;
+export default typeof self !== "undefined" ? self.ManualPromise : ManualPromise;
